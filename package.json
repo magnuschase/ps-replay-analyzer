@@ -1,11 +1,11 @@
 {
-  "name": "vite-web-extension",
-  "version": "1.4.0",
-  "description": "A simple chrome & firefox extension template with Vite, React, TypeScript and Tailwind CSS.",
+  "name": "ps-replay-analyzer",
+  "version": "1.0.0",
+  "description": "Analyzes Pokemon Showdown replays and generates notes",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JohnBra/vite-web-extension.git"
+    "url": "https://github.com/magnuschase/ps-replay-analyzer.git"
   },
   "scripts": {
     "build": "vite build --config vite.config.chrome.ts",
