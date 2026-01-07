@@ -115,3 +115,4 @@ Check out the `examples/` directory for visual demonstrations:
 
 - **Generated static replay file**:
   ![Showdown Replay](docs/examples/generated_replay_extension.png)
+
