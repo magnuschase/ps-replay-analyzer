@@ -5,10 +5,13 @@ import injectedScript from "./injected?script";
 
 try {
   console.log("[PS Replay Analyzer] content script loaded");
+  const url = chrome.runtime.getURL(injectedScript);
+  console.log("[PS Replay Analyzer] resolved URL:", url);
 
   // Inject the script
   const script = document.createElement("script");
-  script.src = injectedScript;
+  script.src = url;
+  script.type = "module";
   script.onload = function () {
     console.log("[PS Replay Analyzer] injected.js loaded");
   };
