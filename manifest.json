@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PS Replay Analyzer",
-  "description": "Analyzes Pokemon Showdown replays and generates notes",
+  "description": "Automatically captures and stores Pokemon Showdown battle logs locally.",
   "options_ui": {
     "page": "src/pages/options/index.html"
   },
@@ -15,6 +15,15 @@
     "128": "icon-128.png"
   },
   "permissions": ["activeTab"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ps-replay-analyzer@jakubkapala.com",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
   "content_scripts": [
     {
       "matches": [
