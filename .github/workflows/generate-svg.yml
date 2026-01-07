@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "**.mmd"
   pull_request:
+    paths:
+      - "**.mmd"
 
 jobs:
   generate-diagrams:
