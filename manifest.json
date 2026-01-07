@@ -17,15 +17,21 @@
   "permissions": ["activeTab"],
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "matches": [
+        "https://play.pokemonshowdown.com/*",
+        "http://play.pokemonshowdown.com/*"
+      ],
       "js": ["src/pages/content/index.ts"]
     }
   ],
   "devtools_page": "src/pages/devtools/index.html",
   "web_accessible_resources": [
     {
-      "resources": ["icon-128.png", "icon-32.png"],
-      "matches": []
+      "resources": ["assets/*.js", "icon-128.png", "icon-32.png"],
+      "matches": [
+        "https://play.pokemonshowdown.com/*",
+        "https://*.pokemonshowdown.com/*"
+      ]
     }
   ]
 }
