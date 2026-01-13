@@ -109,12 +109,32 @@ async function processBattle() {
 }
 
 let downloadButtonFound = false;
+let uploadButtonClicked = false;
 
 function checkButton() {
   const downloadBtn = document.querySelector(".replayDownloadButton");
+  const saveReplayBtn = document.querySelector("button[name='saveReplay']");
+  
+  // Check for the specific success popup
+  let closeBtn: Element | null = null;
+  if (uploadButtonClicked) {
+    const overlays = document.querySelectorAll('.ps-overlay');
+    for (const overlay of Array.from(overlays)) {
+      if (overlay.textContent && overlay.textContent.includes('Your replay has been uploaded!')) {
+        closeBtn = overlay.querySelector('button[name="close"]');
+        if (closeBtn) break;
+      }
+    }
+  }
 
   // Check if app is ready before proceeding
   const app = getApp();
+
+  if (uploadButtonClicked && closeBtn) {
+    console.log("[PS Replay Analyzer] Closing upload success popup...");
+    (closeBtn as HTMLElement).click();
+    uploadButtonClicked = false;
+  }
 
   if (downloadBtn && !downloadButtonFound) {
     if (app) {
@@ -122,12 +142,27 @@ function checkButton() {
       console.log(
         "[PS Replay Analyzer] Download button found! Starting extraction..."
       );
+
+      if (saveReplayBtn) {
+        console.log(
+          "[PS Replay Analyzer] 'Upload and share replay' button found! Clicking..."
+        );
+        (saveReplayBtn as HTMLElement).click();
+        uploadButtonClicked = true;
+      }
+
       processBattle();
     } else {
       console.log("[PS Replay Analyzer] Button found but app not ready...");
     }
   } else if (!downloadBtn) {
     downloadButtonFound = false;
+    // Don't reset uploadButtonClicked here immediately, as the button might disappear 
+    // while the upload is in progress (though usually it stays). 
+    // But if the user navigates away completely, we might want to reset.
+    // For now, let's keep it sticky until the popup is handled or a timeout?
+    // If the download button is gone, we likely left the battle.
+    uploadButtonClicked = false; 
   }
 }
 
