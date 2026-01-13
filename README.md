@@ -1,12 +1,14 @@
 <div align="center"><img src="public/icon-128.png" alt="logo"/>
 <h3>Pokemon Showdown Replay Analyzer</h3>
+
+[![Firefox Add-on](https://img.shields.io/amo/v/ps-replay-analyzer?label=Firefox%20Add-on&style=for-the-badge)](https://addons.mozilla.org/en-US/firefox/addon/ps-replay-analyzer/)
 </div>
 
 ## Intro
 
-**PS Replay Analyzer** is a browser extension developed primarily for **Firefox** (with Chrome support) that streamlines the collection of Pokemon Showdown battle data.
+**PS Replay Analyzer** is a browser extension developed primarily for **Firefox** (with Chrome support) that streamlines the collection and sharing of Pokemon Showdown battle data.
 
-Instead of manually downloading/uploading the replay, this extension detects when a battle finishes and the "Download Replay" option becomes available. It then automatically captures the replay log, parses the battle data, and stores it locally for you to review later.
+Instead of manually downloading or uploading replays, this extension automatically detects when a battle finishes. It captures the replay log for local analysis and triggers the **Upload and share replay** command. This ensures your battles are both stored locally for review and have a permanent URL generated for reporting tools.
 
 ## Architecture
 
@@ -38,12 +40,18 @@ This project leverages several software design patterns to ensure maintainabilit
 
 ## Features
 
+- **Automatic Log Extraction**: Automatically detects battle completion and captures raw logs without manual intervention.
+- **Automatic Replay Upload**: Triggers the "Upload and share replay" command and automatically closes the success modal.
+- **PASRS Compatibility**: Streamlines data entry for the [PALKIA Academy Showdown Reporting Spreadsheet (PASRS)](https://devoncorp.press/resources/the-release-of-pasrs-6-2) by providing immediate replay URLs.
+- **Local Battle Storage**: Persists analyzed battle data locally using IndexedDB for offline review and historical tracking.
+
+## Tech Stack
+
 - **React 19**
 - **TypeScript**
 - **Tailwind CSS 4**
-- **Vite**
-- **IndexedDB** for local storage
-- **Strategy-based Log Parsing**
+- **Vite** with CRXJS
+- **IndexedDB** for local persistence
 
 ## Usage
 
