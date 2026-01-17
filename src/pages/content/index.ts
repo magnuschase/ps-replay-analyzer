@@ -1,4 +1,3 @@
-import "./style.css";
 // @crxjs/vite-plugin forces vite to build ?script files as standalone scripts
 // import will resolve to something like "/assets/injected.28c29.js"
 import injectedScript from "./injected?script";
@@ -23,7 +22,7 @@ try {
 
     if (event.data.type && event.data.type === "SHOWDOWN_ANALYZER_LOG") {
       console.log(
-        "[PS Replay Analyzer] Received log from page, sending to background"
+        "[PS Replay Analyzer] Received log from page, sending to background",
       );
       chrome.runtime.sendMessage({
         type: "SAVE_BATTLE",
